@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CryptoPawn 日刊メルマガ 原稿案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #f5f6f8;
+    color: #1a1a2e;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2c2750 60%, #c9a227 100%);
+    color: #fff;
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  .page-header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; letter-spacing: .02em; }
+  .page-header p { font-size: 13px; color: #d8d3b3; }
+  .page-header .meta {
+    display: inline-flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; justify-content: center;
+    font-size: 12px; color: #f2e5a7;
+  }
+  .page-header .meta span { background: rgba(255,255,255,.08); padding: 4px 12px; border-radius: 6px; }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+    padding: 14px 20px; background: #fff; border-bottom: 1px solid #e2e8f0;
+    font-size: 12px; font-weight: 500; position: sticky; top: 0; z-index: 100;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; color: #475569; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .legend-dot.blue { background: #3b82f6; }
+  .legend-dot.gold { background: #c9a227; }
+  .legend-dot.orange { background: #f59e0b; }
+  .legend-dot.green { background: #22c55e; }
+
+  /* ── Sticky TOC ── */
+  .nav-toc {
+    display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;
+    padding: 10px 20px; background: #fff; border-bottom: 1px solid #e2e8f0;
+    position: sticky; top: 46px; z-index: 99;
+  }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600;
+    padding: 4px 10px; border-radius: 16px; text-decoration: none; color: #475569;
+    background: #f1f5f9; border: 1px solid #e2e8f0; transition: all .15s; cursor: pointer;
+  }
+  .nav-btn:hover { background: #e2e8f0; }
+  .nav-btn .nav-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── Container ── */
+  .container { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* ── Intro ── */
+  .intro {
+    background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  }
+  .intro h2 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #1a1a2e; }
+  .intro p { font-size: 13px; color: #475569; margin-bottom: 8px; }
+  .intro ul { font-size: 13px; color: #475569; padding-left: 20px; }
+  .intro li { margin-bottom: 4px; }
+  .intro strong { color: #1a1a2e; }
+  .intro code { background: #f1f5f9; padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+
+  /* ── Section label ── */
+  .section-head {
+    display: flex; align-items: center; gap: 10px;
+    margin: 32px 4px 16px; font-size: 15px; font-weight: 700; color: #1a1a2e;
+  }
+  .section-head::before { content: ''; width: 5px; height: 20px; border-radius: 3px; background: #c9a227; }
+  .section-head .sub { font-size: 12px; font-weight: 400; color: #64748b; }
+
+  /* ── Card ── */
+  .step { margin-bottom: 0; scroll-margin-top: 130px; }
+  .card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+    overflow: hidden; transition: box-shadow .2s;
+  }
+  .card:hover { box-shadow: 0 2px 6px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06); }
+  .card-border-blue   { border-left: 4px solid #3b82f6; }
+  .card-border-gold   { border-left: 4px solid #c9a227; }
+  .card-border-orange { border-left: 4px solid #f59e0b; }
+  .card-border-green  { border-left: 4px solid #22c55e; }
+
+  .card-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 18px 22px 14px; border-bottom: 1px solid #f1f5f9; flex-wrap: wrap;
+  }
+  .card-tag {
+    font-size: 12px; font-weight: 700; color: #fff; background: #1a1a2e;
+    padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+  }
+  .card-title { font-size: 16px; font-weight: 700; flex: 1; color: #1a1a2e; }
+  .badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+  .badge-insert { background: #dbeafe; color: #1e40af; }
+  .badge-gold   { background: #fef3c7; color: #92400e; }
+  .badge-news   { background: #ffedd5; color: #9a3412; }
+  .badge-case   { background: #dcfce7; color: #166534; }
+
+  .card-body { padding: 18px 22px 22px; }
+  .card-trigger {
+    font-size: 11px; color: #64748b; margin-bottom: 12px;
+    background: #f8fafc; border: 1px solid #e2e8f0; padding: 6px 10px; border-radius: 6px;
+  }
+  .card-trigger b { color: #1a1a2e; }
+
+  /* ── Mail preview ── */
+  .mail-preview {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin: 10px 0;
+  }
+  .mail-head { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 10px 14px; font-size: 12px; color: #475569; }
+  .mail-head .from { font-weight: 600; color: #1a1a2e; }
+  .mail-head .subj { display: block; font-weight: 700; color: #1a1a2e; font-size: 14px; margin-top: 4px; }
+  .mail-body {
+    padding: 18px 18px 20px; font-size: 13px; line-height: 1.95; color: #1a1a2e; white-space: pre-line;
+  }
+  .mail-body .cta {
+    display: inline-block; margin: 10px 0 4px; padding: 11px 24px;
+    background: linear-gradient(135deg, #c9a227, #e7c14b); color: #1a1a2e;
+    font-weight: 700; font-size: 13px; border-radius: 6px; text-decoration: none;
+    box-shadow: 0 2px 4px rgba(201,162,39,.25);
+  }
+  .mail-body .cta:hover { filter: brightness(1.03); }
+  .mail-body .small { font-size: 11px; color: #64748b; }
+
+  /* ── Note ── */
+  .note {
+    margin-top: 14px; padding: 12px 14px; background: #f1f5f9; border-left: 3px solid #64748b;
+    border-radius: 6px; font-size: 12px; color: #334155; line-height: 1.7;
+  }
+  .note b { color: #1a1a2e; }
+  .callout {
+    background: #fef9c3; border-left: 4px solid #c9a227; padding: 12px 14px; border-radius: 6px;
+    font-size: 12px; color: #713f12; margin: 12px 0; line-height: 1.7;
+  }
+  .callout b { display: block; margin-bottom: 4px; color: #1a1a2e; }
+
+  .flow-arrow { height: 28px; display: flex; justify-content: center; align-items: center; color: #cbd5e1; font-size: 20px; }
+  .flow-arrow::after { content: '↓'; }
+
+  /* ── Feedback ── */
+  .feedback-area { margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e2e8f0; }
+  .feedback-toggle {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700;
+    color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px;
+    padding: 4px 10px; cursor: pointer; user-select: none;
+  }
+  .feedback-toggle .fb-icon { font-size: 10px; background: #6366f1; color: #fff; padding: 1px 6px; border-radius: 3px; }
+  .feedback-toggle .fb-count { display: none; font-size: 10px; color: #4338ca; background: #ddd6fe; padding: 0 6px; border-radius: 10px; }
+  .feedback-toggle.has-content .fb-count { display: inline; }
+  .feedback-body { display: none; margin-top: 8px; }
+  .feedback-body.open { display: block; }
+  .feedback-textarea {
+    width: 100%; min-height: 70px; border: 1px solid #cbd5e1; border-radius: 6px;
+    padding: 10px 12px; font-family: inherit; font-size: 12px; line-height: 1.6;
+    resize: vertical; color: #1a1a2e; background: #fafbfd;
+  }
+  .feedback-textarea:focus { outline: none; border-color: #6366f1; background: #fff; }
+  .feedback-status { font-size: 10px; color: #94a3b8; margin-top: 4px; }
+
+  .export-bar { text-align: center; margin: 16px auto 0; }
+  .export-btn {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;
+    color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px;
+    padding: 6px 14px; cursor: pointer; transition: all .15s; margin: 0 4px;
+  }
+  .export-btn:hover { background: #e0e7ff; }
+  .export-btn.danger { color: #ef4444; background: #fef2f2; border-color: #fecaca; }
+  .export-btn.danger:hover { background: #fee2e2; }
+
+  @media (max-width: 700px) {
+    .nav-toc { top: 44px; }
+    .page-header h1 { font-size: 20px; }
+  }
+  @media print {
+    .legend, .nav-toc, .export-bar, .feedback-area { display: none; }
+    body { background: #fff; }
+    .card { box-shadow: none; border: 1px solid #e2e8f0; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>CryptoPawn 日刊メルマガ 原稿案</h1>
+  <p>既存メルマガに差し込む「相談会誘導」ブロック ＋ フル号原稿</p>
+  <div class="meta">
+    <span>v1.0｜2026-06-29</span>
+    <span>Leit On 大石</span>
+    <span>誘導先: オンライン個別相談（Calendly）</span>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot blue"></div>差し込みブロック（毎日）</div>
+  <div class="legend-item"><div class="legend-dot gold"></div>税金・王道フック</div>
+  <div class="legend-item"><div class="legend-dot orange"></div>時事フック</div>
+  <div class="legend-item"><div class="legend-dot green"></div>利用事例</div>
+</div>
+
+<div class="nav-toc">
+  <a href="#b1" class="nav-btn"><div class="nav-dot" style="background:#3b82f6"></div>差込① 基本</a>
+  <a href="#b2" class="nav-btn"><div class="nav-dot" style="background:#3b82f6"></div>差込② 希少性</a>
+  <a href="#b3" class="nav-btn"><div class="nav-dot" style="background:#3b82f6"></div>差込③ 税金</a>
+  <a href="#b4" class="nav-btn"><div class="nav-dot" style="background:#3b82f6"></div>差込④ 事例</a>
+  <a href="#s1" class="nav-btn"><div class="nav-dot" style="background:#c9a227"></div>フル① 利確税金</a>
+  <a href="#s2" class="nav-btn"><div class="nav-dot" style="background:#c9a227"></div>フル② 確定申告</a>
+  <a href="#s3" class="nav-btn"><div class="nav-dot" style="background:#f59e0b"></div>フル③ 半減期/ETF</a>
+  <a href="#s4" class="nav-btn"><div class="nav-dot" style="background:#22c55e"></div>フル④ 利用事例</a>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <h2>このメルマガの設計方針</h2>
+    <p><strong>位置づけ</strong>：ステップメールではなく、<strong>既存の日刊メルマガに差し込む</strong>形。前半＝時事ネタ／後半＝オンライン個別相談への誘導。参考は「水戸大家（峯島）」の日刊メルマガの型。</p>
+    <p><strong>大前提</strong>：既存メルマガの世界観を壊さない。基本は<strong>本文末尾に短いブロックを1つ貼るだけ</strong>。慣れたらフル号を週1で投入。</p>
+    <p><strong>誘導先</strong>：オンライン個別相談（1対1）＝ <code>calendly.com/d/ds9m-crj-6m5/crypto-pawn_</code></p>
+    <p><strong>コンプラ</strong>：税率「最大約55%」は最大ケース（雑所得・総合課税／税務助言ではない旨を併記）。「絶対」「必ず儲かる」等の断定はNG。数字（実績10億・月利0.1%・極度額1億）は<strong>配信前に最新値を確認</strong>。事例は匿名化＋掲載許諾。</p>
+    <p class="small">※各カード右下の「フィードバック」にコメントを書くと自動保存され、最下部「フィードバックをコピー」でまとめて書き出せます。</p>
+  </div>
+
+  <!-- ════════ 差し込みブロック ════════ -->
+  <div class="section-head">差し込みブロック集 <span class="sub">／ 毎日の主役・本文末尾に挿入・日替わりで 1〜4 を差し替え</span></div>
+
+  <div class="step" id="b1">
+    <div class="card card-border-blue">
+      <div class="card-header">
+        <span class="card-tag">差込①</span>
+        <span class="card-title">基本ブロック（標準形）</span>
+        <span class="badge badge-insert">差し込み</span>
+      </div>
+      <div class="card-body">
+        <div class="card-trigger"><b>用途</b>：通常号の本文末尾に挿入｜<b>狙い</b>：1対1個別相談へ低ハードルで誘導</div>
+        <div class="mail-preview">
+          <div class="mail-head"><span class="from">差し込みブロック ／ 既存メルマガの本文末尾に挿入</span></div>
+          <div class="mail-body">■ 暗号資産の"出口"無料オンライン個別相談（1対1）
+
+「売りたくないけど、現金は必要」
+「利確すると税金が…」
+「いくらまで借りられる？」
+
+こういうご相談を、オンラインで個別にお受けしています。
+売り込みはしません。今のあなたに合う選択肢を一緒に整理するだけです。
+
+▼専門家による相談枠（予約が先まで埋まりがちです）
+▼すぐ話したい方はスタッフ枠（最短で明日も対応可）
+
+ご希望の方はこちら
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a></div>
+        </div>
+        <div class="feedback-area" data-step="差込① 基本ブロック">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-b1" placeholder="差込① へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"></div>
+
+  <div class="step" id="b2">
+    <div class="card card-border-blue">
+      <div class="card-header">
+        <span class="card-tag">差込②</span>
+        <span class="card-title">希少性ブロック（残り枠表示）</span>
+        <span class="badge badge-insert">差し込み</span>
+      </div>
+      <div class="card-body">
+        <div class="card-trigger"><b>用途</b>：週前半など枠を見せたい号｜<b>狙い</b>：「残り◯枠」で今動く理由をつくる</div>
+        <div class="mail-preview">
+          <div class="mail-head"><span class="from">差し込みブロック ／ 既存メルマガの本文末尾に挿入</span></div>
+          <div class="mail-body">■ 今週の個別相談 空き枠のご案内
+
+◯/◯（◯）14:00〜　残り2枠
+◯/◯（◯）19:00〜　残り1枠
+◯/◯（◯）終日　　　残り3枠
+
+専門家枠は埋まりやすいため、
+お急ぎの方はスタッフ枠（最短で明日）をご利用ください。
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">空き枠を確認して予約する</a></div>
+        </div>
+        <div class="feedback-area" data-step="差込② 希少性ブロック">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-b2" placeholder="差込② へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"></div>
+
+  <div class="step" id="b3">
+    <div class="card card-border-blue">
+      <div class="card-header">
+        <span class="card-tag">差込③</span>
+        <span class="card-title">税金フックブロック</span>
+        <span class="badge badge-insert">差し込み</span>
+      </div>
+      <div class="card-body">
+        <div class="card-trigger"><b>用途</b>：相場・税金の時事に絡める号のP.S.｜<b>狙い</b>：「売ると課税」→「売らずに借りる」</div>
+        <div class="mail-preview">
+          <div class="mail-head"><span class="from">差し込みブロック ／ 既存メルマガの本文末尾（P.S.）に挿入</span></div>
+          <div class="mail-body">P.S.
+暗号資産は「売って利益が出ると、最大で約55%が税金」になり得ます。
+（雑所得・総合課税。税負担は所得状況により異なります）
+
+"売らずに、担保にして現金だけ作る"という選択肢、
+一度オンラインで個別に整理してみませんか。
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a></div>
+        </div>
+        <div class="feedback-area" data-step="差込③ 税金フック">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-b3" placeholder="差込③ へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"></div>
+
+  <div class="step" id="b4">
+    <div class="card card-border-blue">
+      <div class="card-header">
+        <span class="card-tag">差込④</span>
+        <span class="card-title">事例フックブロック</span>
+        <span class="badge badge-insert">差し込み</span>
+      </div>
+      <div class="card-body">
+        <div class="card-trigger"><b>用途</b>：具体イメージを持たせたい号｜<b>狙い</b>：自分ごと化 →「いくら借りられる？」へ</div>
+        <div class="mail-preview">
+          <div class="mail-head"><span class="from">差し込みブロック ／ 既存メルマガの本文末尾に挿入</span></div>
+          <div class="mail-body">■ こんな使い方をされています（一部）
+
+・事業の運転資金を、保有BTCを売らずに用意
+・住宅購入の頭金を、相場を読まずに即日で
+・納税資金を、ポジションを崩さずに確保
+
+あなたのケースでいくら借りられるか、
+オンライン個別相談で試算します（無料）。
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料で試算してもらう</a>
+<span class="small">※利用事例は匿名・掲載許諾を取得のうえ掲載</span></div>
+        </div>
+        <div class="feedback-area" data-step="差込④ 事例フック">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-b4" placeholder="差込④ へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ フル号 ════════ -->
+  <div class="section-head">フル号 原稿（週1想定／4本） <span class="sub">／ CryptoPawnが主役の号・時事→教育→相談会の流れ</span></div>
+
+  <div class="callout">
+    <b>「編集後記」の位置について</b>
+    下記は単体で読める形のため編集後記が早めに出ますが、実際は既存メルマガの時事ネタ本文の後ろに置くので位置は自然になります。丸ごと単体で出す時だけ、見出しを「ここからが本題です」等に差し替えてください。
+  </div>
+
+  <div class="step" id="s1">
+    <div class="card card-border-gold">
+      <div class="card-header">
+        <span class="card-tag">フル①</span>
+        <span class="card-title">BTC高騰 × 利確税金フック（王道）</span>
+        <span class="badge badge-gold">税金・王道</span>
+      </div>
+      <div class="card-body">
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：ビットコイン、また上がってますね。"利確"の前に知ってほしいこと</span>
+          </div>
+          <div class="mail-body">CryptoPawn編集部です。
+
+ビットコインがまた騒がしいですね。
+SNSのタイムラインも「利確した／しない」で盛り上がっています。
+
+こういう時、必ず出てくるのが
+「上がったから売って利益を確定させよう」という声です。
+
+でも、ちょっと待ってください。
+続きは編集後記で。
+
+━━━━━━━━━━━━━━━━━━
+■ 編集後記
+
+暗号資産を売って利益が出ると、その利益は
+「雑所得・総合課税」として扱われます。
+
+所得が大きい人だと、税率は住民税と合わせて
+最大で約55%。せっかくの利益が、半分近く
+税金で消えることもあり得るわけです。
+（※税負担は所得状況により異なります。本メールは税務助言ではありません）
+
+さらに、一度売ってしまうと
+「やっぱりまだ上がるかも」と思った時に
+買い直す必要があり、相場を読み直す手間も増えます。
+
+そこで知っておいてほしいのが、
+"売らずに、担保にして現金だけ作る" という選択肢です。
+
+1. 暗号資産を担保として預ける
+2. 評価額に応じて現金を借りる
+3. 返済すれば、暗号資産はそのまま戻る
+
+ポジションは持ったまま、必要な現金だけ手に入る。
+「売る」ではなく「一時的に使う」という発想です。
+
+CryptoPawnは累計の契約実績が10億円を突破しました。
+月利0.1%〜・極度額は1億円まで対応しています。
+（※最新の条件は申込前にご確認ください）
+
+━━━━━━━━━━━━━━━━━━
+■ 無料オンライン個別相談（1対1）
+
+「自分の場合いくら借りられる？」
+「税金を抑える出口ってどう作るの？」
+
+こうしたご相談を、オンラインで個別にお受けしています。
+売り込みはしません。選択肢を一緒に整理するだけです。
+
+▼専門家枠（予約が先まで埋まりがちです）
+▼スタッフ枠（最短で明日も対応可）
+
+ご希望はこちら
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a>
+
+それでは、また。
+── CryptoPawn編集部</div>
+        </div>
+        <div class="feedback-area" data-step="フル① 利確税金フック">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-s1" placeholder="フル① へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"></div>
+
+  <div class="step" id="s2">
+    <div class="card card-border-gold">
+      <div class="card-header">
+        <span class="card-tag">フル②</span>
+        <span class="card-title">確定申告・税金シーズン × 売らずに現金</span>
+        <span class="badge badge-gold">税金・王道</span>
+      </div>
+      <div class="card-body">
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：「含み益に税金」の現実 ──売らずに現金を作る、もう一つの選択</span>
+          </div>
+          <div class="mail-body">CryptoPawn編集部です。
+
+確定申告のニュースが流れる季節になると、
+毎年このご相談が増えます。
+
+「利益は出てる。でも納税のために売ったら、
+　その売却益にまた税金がかかる…」
+
+この"税金のループ"、地味にしんどいですよね。
+続きは編集後記で。
+
+━━━━━━━━━━━━━━━━━━
+■ 編集後記
+
+納税資金を作るために暗号資産を売る。
+すると、その売却益がまた課税対象になる。
+結果、手元に残るお金がどんどん削れていく。
+
+これを避ける考え方が「売らずに借りる」です。
+
+担保にして現金を用意すれば、
+・ポジションは崩れない
+・新たな売却益＝課税が発生しない
+・相場が戻った時に"持っていなかった"後悔もない
+
+CryptoPawnなら、預けた暗号資産は
+返済後そのまま戻ってきます。
+月利0.1%〜、最短即日での現金化に対応。
+（※税負担・条件は個別状況により異なります。本メールは税務助言ではありません）
+
+━━━━━━━━━━━━━━━━━━
+■ 無料オンライン個別相談（1対1）
+
+納税・資金繰りのタイミングは人それぞれ。
+あなたのケースで「売る vs 借りる」のどちらが得か、
+オンラインで一緒に試算します。
+
+▼専門家枠（残りわずか）／▼スタッフ枠（最短明日）
+
+ご希望はこちら
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a>
+
+── CryptoPawn編集部</div>
+        </div>
+        <div class="feedback-area" data-step="フル② 確定申告">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-s2" placeholder="フル② へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"></div>
+
+  <div class="step" id="s3">
+    <div class="card card-border-orange">
+      <div class="card-header">
+        <span class="card-tag">フル③</span>
+        <span class="card-title">これから上がると思うなら（半減期/ETF/機関参入）</span>
+        <span class="badge badge-news">時事フック</span>
+      </div>
+      <div class="card-body">
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：「今売るのはもったいない。でも現金が要る」を解決する方法</span>
+          </div>
+          <div class="mail-body">CryptoPawn編集部です。
+
+ETFへの資金流入、機関投資家の参入、半減期……
+「中長期ではまだ上がる」と見る人が増えています。
+
+そんな中で一番もったいないのが、
+"目先の現金が必要"という理由だけで、
+上昇途中のポジションを手放してしまうこと。
+続きは編集後記で。
+
+━━━━━━━━━━━━━━━━━━
+■ 編集後記
+
+「長期では強気。でも今月、まとまった現金が要る」
+このジレンマは、担保ローンで綺麗に解けます。
+
+・売らない → 上昇の取りこぼしがない
+・借りる　 → 必要な現金は今すぐ手に入る
+・返す　　 → 暗号資産はそのまま戻る
+
+強気で持ち続けたい資産だからこそ、
+"手放さずに使う"という発想が効いてきます。
+
+CryptoPawnは極度額1億円まで対応。
+大口の資金需要にも、即日で動けます。
+（※最新の条件は申込前にご確認ください）
+
+━━━━━━━━━━━━━━━━━━
+■ 無料オンライン個別相談（1対1）
+
+「いくらまで借りられる？」「金利の総額は？」
+数字を見ながら、オンラインで具体的にご説明します。
+
+▼専門家枠／▼スタッフ枠（最短明日）
+
+ご希望はこちら
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a>
+
+── CryptoPawn編集部</div>
+        </div>
+        <div class="feedback-area" data-step="フル③ 半減期/ETF">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-s3" placeholder="フル③ へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"></div>
+
+  <div class="step" id="s4">
+    <div class="card card-border-green">
+      <div class="card-header">
+        <span class="card-tag">フル④</span>
+        <span class="card-title">利用事例ベース</span>
+        <span class="badge badge-case">利用事例</span>
+      </div>
+      <div class="card-body">
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：暗号資産を"担保"にした3人の話</span>
+          </div>
+          <div class="mail-body">CryptoPawn編集部です。
+
+今日は、実際にどんな使われ方をしているのか、
+3つのケースをご紹介します（※個別事例は匿名・許諾済み）。
+続きは編集後記で。
+
+━━━━━━━━━━━━━━━━━━
+■ 編集後記
+
+【ケース1】事業の運転資金
+保有していたBTCを売らずに、運転資金を確保。
+「相場が伸びている局面で手放さずに済んだ」
+
+【ケース2】住宅購入の頭金
+相場のタイミングを読まずに、頭金を即日で用意。
+「売却益の税金を気にせず動けたのが大きい」
+
+【ケース3】納税資金
+ポジションを崩さずに、納税分だけを調達。
+「資産は持ったまま、現金の問題だけ解決した」
+
+共通点は、どれも
+"売らずに、必要な現金だけ作った"こと。
+
+CryptoPawnは累計契約10億円突破。
+月利0.1%〜、返済後に暗号資産はそのまま戻ります。
+
+━━━━━━━━━━━━━━━━━━
+■ 無料オンライン個別相談（1対1）
+
+あなたのケースでいくら借りられるか、
+オンラインで試算します（無料・売り込みなし）。
+
+▼専門家枠／▼スタッフ枠（最短明日）
+
+ご希望はこちら
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a>
+
+── CryptoPawn編集部</div>
+        </div>
+        <div class="feedback-area" data-step="フル④ 利用事例">
+          <div class="feedback-toggle" onclick="toggleFeedback(this)"><span class="fb-icon">memo</span> フィードバック <span class="fb-count"></span></div>
+          <div class="feedback-body">
+            <textarea class="feedback-textarea" data-key="fb-s4" placeholder="フル④ へのコメント・修正依頼をここに..." oninput="saveFeedback(this)"></textarea>
+            <div class="feedback-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="export-bar">
+    <button class="export-btn" onclick="exportFeedback()">フィードバックをコピー</button>
+    <button class="export-btn danger" onclick="clearAllFeedback()">全コメントをクリア</button>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.feedback-textarea').forEach(t => {
+    const k = t.dataset.key;
+    const v = localStorage.getItem(k);
+    if (v) {
+      t.value = v;
+      const toggle = t.closest('.feedback-area').querySelector('.feedback-toggle');
+      toggle.classList.add('has-content');
+      toggle.querySelector('.fb-count').textContent = v.length + '字';
+    }
+  });
+
+  function toggleFeedback(el) {
+    el.parentElement.querySelector('.feedback-body').classList.toggle('open');
+  }
+
+  function saveFeedback(t) {
+    localStorage.setItem(t.dataset.key, t.value);
+    const status = t.parentElement.querySelector('.feedback-status');
+    status.textContent = '自動保存しました';
+    const toggle = t.closest('.feedback-area').querySelector('.feedback-toggle');
+    const count = toggle.querySelector('.fb-count');
+    if (t.value.length > 0) { toggle.classList.add('has-content'); count.textContent = t.value.length + '字'; }
+    else { toggle.classList.remove('has-content'); }
+    setTimeout(() => { status.textContent = ''; }, 1500);
+  }
+
+  function exportFeedback() {
+    let out = '# CryptoPawn 日刊メルマガ 原稿案 フィードバック\n\n';
+    let has = false;
+    document.querySelectorAll('.feedback-area').forEach(area => {
+      const ta = area.querySelector('.feedback-textarea');
+      if (ta.value.trim()) { has = true; out += '## ' + area.dataset.step + '\n' + ta.value.trim() + '\n\n'; }
+    });
+    if (!has) { alert('フィードバックがまだ入力されていません'); return; }
+    navigator.clipboard.writeText(out).then(() => alert('フィードバックをクリップボードにコピーしました'));
+  }
+
+  function clearAllFeedback() {
+    if (!confirm('全てのフィードバックを削除します。よろしいですか？')) return;
+    document.querySelectorAll('.feedback-textarea').forEach(t => { t.value = ''; localStorage.removeItem(t.dataset.key); });
+    document.querySelectorAll('.feedback-toggle').forEach(tg => tg.classList.remove('has-content'));
+  }
+</script>
+
+</body>
+</html>
