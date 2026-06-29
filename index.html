@@ -124,6 +124,9 @@
   }
   .mail-body .cta:hover { filter: brightness(1.03); }
   .mail-body .small { font-size: 11px; color: #64748b; }
+  .mail-body .ext { color: #8a93a3; }
+  .mail-body .ins-box { display: block; margin-top: 6px; padding: 12px 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; }
+  .mail-body .ins-cap { display: block; white-space: normal; font-size: 11px; font-weight: 700; color: #1d4ed8; margin-bottom: 8px; }
 
   .flow-arrow { height: 28px; display: flex; justify-content: center; align-items: center; color: #cbd5e1; font-size: 20px; }
   .flow-arrow::after { content: '↓'; }
@@ -198,7 +201,7 @@
 
   <div class="callout">
     <b>各テーマの構成について</b>
-    上＝週1想定の「フル号」原稿、下＝毎日使う「差し込み版」（既存メルマガの本文末尾に挿入）。フル号は単体で読める形のため編集後記が早めに出ますが、実際は既存メルマガの時事ネタ本文の後ろに置くので位置は自然になります。丸ごと単体で出す時だけ、見出しを「ここからが本題です」等に差し替えてください。
+    上＝週1想定の「フル号」原稿。下＝毎日使う「差し込み版」を、既存メルマガに差し込んだ『実際に送ったときの見え方』で表示しています（<span style='color:#8a93a3'>グレー＝その日の通常本文のイメージ</span>／<span style='color:#1d4ed8;font-weight:700'>青枠＝実際に差し込む部分</span>）。フル号は単体で読める形のため編集後記が早めに出ますが、実際は通常本文の後ろに置くので位置は自然になります。
   </div>
 
   <!-- ════════ ① 利確税金 ════════ -->
@@ -273,10 +276,20 @@ CryptoPawnは累計の契約実績が10億円を突破しました。
 ── CryptoPawn編集部</div>
         </div>
 
-        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・既存メルマガの本文末尾に挿入（基本形）</span></div>
-        <div class="mail-preview insert">
-          <div class="mail-head"><span class="from">差し込みブロック ／ 本文末尾に挿入</span></div>
-          <div class="mail-body">■ 暗号資産の"出口"無料オンライン個別相談（1対1）
+        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・既存メルマガに差し込んだ実際の見え方</span></div>
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：（その日の時事ネタの件名）</span>
+          </div>
+          <div class="mail-body"><span class="ext">CryptoPawn編集部です。
+
+ビットコインがまた高値圏で推移していますね。
+（ここに、その日の時事ネタ・相場の雑談などの通常本文が続きます）
+
+それでは、また明日。
+── CryptoPawn編集部</span>
+<span class="ins-box"><span class="ins-cap">▼ ここから下が「差し込みブロック」（毎日この部分だけ入れ替えて使う）</span>■ 暗号資産の"出口"無料オンライン個別相談（1対1）
 
 「売りたくないけど、現金は必要」
 「利確すると税金が…」
@@ -286,7 +299,7 @@ CryptoPawnは累計の契約実績が10億円を突破しました。
 売り込みはしません。今のあなたに合う選択肢を一緒に整理するだけです。
 
 ご希望の方はこちら
-<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a></div>
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a></span></div>
         </div>
 
         <div class="feedback-area" data-step="① 利確税金（王道）">
@@ -361,16 +374,26 @@ CryptoPawnなら、預けた暗号資産は
 ── CryptoPawn編集部</div>
         </div>
 
-        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・P.S.として本文末尾に挿入（税金フック）</span></div>
-        <div class="mail-preview insert">
-          <div class="mail-head"><span class="from">差し込みブロック ／ 本文末尾（P.S.）に挿入</span></div>
-          <div class="mail-body">P.S.
+        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・既存メルマガに差し込んだ実際の見え方（P.S.型）</span></div>
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：（その日の時事ネタの件名）</span>
+          </div>
+          <div class="mail-body"><span class="ext">CryptoPawn編集部です。
+
+確定申告の時期が近づいてきましたね。
+（ここに、その日の時事ネタ・雑談などの通常本文が続きます）
+
+それでは、また明日。
+── CryptoPawn編集部</span>
+<span class="ins-box"><span class="ins-cap">▼ 署名のあとに、P.S.として差し込む部分（毎日この部分だけ入れ替えて使う）</span>P.S.
 暗号資産は「売って利益が出ると、最大で約55%が税金」になり得ます。
 （雑所得・総合課税。税負担は所得状況により異なります）
 
 "売らずに、担保にして現金だけ作る"という選択肢、
 一度オンラインで個別に整理してみませんか。
-<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a></div>
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料オンライン個別相談を予約する</a></span></div>
         </div>
 
         <div class="feedback-area" data-step="② 確定申告">
@@ -441,10 +464,20 @@ CryptoPawnは極度額1億円まで対応。
 ── CryptoPawn編集部</div>
         </div>
 
-        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・本文末尾に挿入（空き枠の案内）</span></div>
-        <div class="mail-preview insert">
-          <div class="mail-head"><span class="from">差し込みブロック ／ 本文末尾に挿入</span></div>
-          <div class="mail-body">■ 今週の個別相談 空き枠のご案内
+        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・既存メルマガに差し込んだ実際の見え方</span></div>
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：（その日の時事ネタの件名）</span>
+          </div>
+          <div class="mail-body"><span class="ext">CryptoPawn編集部です。
+
+ETFへの資金流入が続いていますね。
+（ここに、その日の時事ネタ・相場の雑談などの通常本文が続きます）
+
+それでは、また明日。
+── CryptoPawn編集部</span>
+<span class="ins-box"><span class="ins-cap">▼ ここから下が「差し込みブロック」（毎日この部分だけ入れ替えて使う）</span>■ 今週の個別相談 空き枠のご案内
 
 ◯/◯（◯）14:00〜　残り2枠
 ◯/◯（◯）19:00〜　残り1枠
@@ -452,7 +485,7 @@ CryptoPawnは極度額1億円まで対応。
 
 枠が埋まり次第、受付を締め切ります。
 お早めにご予約ください。
-<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">空き枠を確認して予約する</a></div>
+<a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">空き枠を確認して予約する</a></span></div>
         </div>
 
         <div class="feedback-area" data-step="③ 半減期/ETF">
@@ -523,10 +556,19 @@ CryptoPawnは累計契約10億円突破。
 ── CryptoPawn編集部</div>
         </div>
 
-        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・本文末尾に挿入（事例フック）</span></div>
-        <div class="mail-preview insert">
-          <div class="mail-head"><span class="from">差し込みブロック ／ 本文末尾に挿入</span></div>
-          <div class="mail-body">■ こんな使い方をされています（一部）
+        <div class="block-label insert">差し込み版 <span class="lb-note">／ 毎日・既存メルマガに差し込んだ実際の見え方</span></div>
+        <div class="mail-preview">
+          <div class="mail-head">
+            <span class="from">CryptoPawn編集部</span>
+            <span class="subj">件名：（その日の時事ネタの件名）</span>
+          </div>
+          <div class="mail-body"><span class="ext">CryptoPawn編集部です。
+
+（ここに、その日の時事ネタ・雑談などの通常本文が続きます）
+
+それでは、また明日。
+── CryptoPawn編集部</span>
+<span class="ins-box"><span class="ins-cap">▼ ここから下が「差し込みブロック」（毎日この部分だけ入れ替えて使う）</span>■ こんな使い方をされています（一部）
 
 ・事業の運転資金を、保有BTCを売らずに用意
 ・住宅購入の頭金を、相場を読まずに即日で
@@ -535,7 +577,7 @@ CryptoPawnは累計契約10億円突破。
 あなたのケースでいくら借りられるか、
 オンライン個別相談で試算します（無料）。
 <a class="cta" href="https://calendly.com/d/ds9m-crj-6m5/crypto-pawn_" target="_blank" rel="noopener">無料で試算してもらう</a>
-<span class="small">※利用事例は匿名・掲載許諾を取得のうえ掲載</span></div>
+<span class="small">※利用事例は匿名・掲載許諾を取得のうえ掲載</span></span></div>
         </div>
 
         <div class="feedback-area" data-step="④ 利用事例">
